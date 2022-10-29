@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: f51e9ef761cba7e4399c6756678f5894, type: 2}
 --- !u!143 &602534509 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 3417099386280366664, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
@@ -239,7 +239,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1560710998
 MeshCollider:
@@ -637,6 +637,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3318897581210234897, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318897581210234897, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
       propertyPath: jumpsMax
       value: 2
@@ -663,3 +671,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+--- !u!1001 &5732162304233381069
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2737371835119330578, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.449282
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
