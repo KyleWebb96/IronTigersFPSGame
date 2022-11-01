@@ -52,6 +52,7 @@ public class enemyAI : MonoBehaviour, IDamage
         playerDir.y = 0;
 
         Quaternion rotation = Quaternion.LookRotation(playerDir);
+
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * playerFaceSpeed);
     }
 
@@ -73,7 +74,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(0.15f);
 
-        model.material.color = Color.white;
+        model.material.color = Color.blue;
     }
     IEnumerator shoot()
     {

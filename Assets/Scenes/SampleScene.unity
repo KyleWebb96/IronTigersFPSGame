@@ -771,8 +771,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+      propertyPath: HP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
       propertyPath: jumpsMax
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+      propertyPath: shootDist
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+      propertyPath: shootRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
       propertyPath: sprintMod
@@ -789,6 +801,10 @@ PrefabInstance:
     - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
       propertyPath: playerSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
+      propertyPath: shootDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992028528254901136, guid: b25c782ea6de90a44a644433a5713c8c, type: 3}
       propertyPath: gravityValue
