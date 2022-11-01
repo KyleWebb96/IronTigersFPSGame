@@ -6,17 +6,24 @@ public class playerController : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
 
+    [SerializeField] int HP;
     [SerializeField] float playerSpeed;
     [SerializeField] float sprintMod;
     [SerializeField] float jumpHeight;
     [SerializeField] float gravityValue;
     [SerializeField] int jumpsMax;
 
+    [SerializeField] float shootRate;
+    [SerializeField] int shootDist;
+    [SerializeField] int shootDamage;
+
+
     Vector3 move;
     private Vector3 playerVelocity;
     int jumpsTimes;
     float playerSpeedOrig;
     bool isSprinting;
+    bool isShooting;
 
     private void Start()
     {
@@ -27,6 +34,7 @@ public class playerController : MonoBehaviour
     {
         movement();
         sprint();
+        StartCoroutine(shoot());
     }
 
     void movement()
@@ -64,5 +72,32 @@ public class playerController : MonoBehaviour
             playerSpeed /= sprintMod;
             isSprinting = false;
         }
+    }
+    IEnumerator shoot()
+    {
+        if (isShooting == false && Input.GetButton("Shoot"))
+        {
+            isShooting = true;
+
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+            {
+                if (hit.collider.GetComponent<IDamage>() != null)
+                {
+                    hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+                }
+
+            }
+
+
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+        }
+    }
+
+    public void damage(int dmg)
+    {
+        HP -= dmg;
+
     }
 }
