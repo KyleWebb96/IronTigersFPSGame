@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 357499030050051126}
   - component: {fileID: 3049106923447752651}
   - component: {fileID: 4192873950088964208}
+  - component: {fileID: -4715691653225563257}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   agent: {fileID: 247011349556935987}
   HP: 3
   playerFaceSpeed: 8
-  bullet: {fileID: 0}
+  bullet: {fileID: 1074046604343275969, guid: 54d995559028dd94cb2d93039a128a45, type: 3}
   shootPos: {fileID: 6429626199632901257}
   shootRate: 2
 --- !u!195 &247011349556935987
@@ -101,7 +102,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -172,4 +173,17 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &-4715691653225563257
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737371835119330578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}

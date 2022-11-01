@@ -16,6 +16,7 @@ public class playerController : MonoBehaviour
     private Vector3 playerVelocity;
     int jumpsTimes;
     float playerSpeedOrig;
+    bool isSprinting;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         movement();
+        sprint();
     }
 
     void movement()
@@ -48,5 +50,19 @@ public class playerController : MonoBehaviour
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    void sprint()
+    {
+        if (Input.GetButtonDown("Sprint"))
+        {
+            playerSpeed *= sprintMod;
+            isSprinting = true;
+        }
+        else if (Input.GetButtonUp("Sprint"))
+        {
+            playerSpeed /= sprintMod;
+            isSprinting = false;
+        }
     }
 }
