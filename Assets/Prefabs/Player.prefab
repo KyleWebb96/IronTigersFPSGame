@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab76b21be3caa445a85b47c019a7db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensHorz: 0
-  sensVert: 0
-  lockVertMin: 0
-  lockVertMax: 0
+  sensHorz: 300
+  sensVert: 300
+  lockVertMin: -85
+  lockVertMax: 85
   inverty: 0
 --- !u!20 &963194227
 Camera:
@@ -116,9 +116,9 @@ GameObject:
   - component: {fileID: 7096310032455023814}
   - component: {fileID: 5521806238379939880}
   - component: {fileID: 2751448434145615946}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,12 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2399e056699ae41a20cfaebd29be71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  playerSpeed: 0
-  sprintMod: 0
-  jumpHeight: 0
-  gravityValue: 0
-  jumpsMax: 0
+  controller: {fileID: 3417099386280366664}
+  HP: 6
+  playerSpeed: 3
+  sprintMod: 5
+  jumpHeight: 12
+  gravityValue: 20
+  jumpsMax: 2
+  shootRate: 1
+  shootDist: 20
+  shootDamage: 1
 --- !u!143 &3417099386280366664
 CharacterController:
   m_ObjectHideFlags: 0

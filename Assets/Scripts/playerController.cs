@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -24,10 +25,13 @@ public class playerController : MonoBehaviour
     float playerSpeedOrig;
     bool isSprinting;
     bool isShooting;
+    int HPOrig;
 
     private void Start()
     {
         playerSpeedOrig = playerSpeed;
+        HPOrig = HP;
+        playerRespawn();
     }
 
     void Update()
@@ -35,6 +39,7 @@ public class playerController : MonoBehaviour
         movement();
         sprint();
         StartCoroutine(shoot());
+
     }
 
     void movement()
@@ -80,7 +85,7 @@ public class playerController : MonoBehaviour
             isShooting = true;
 
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist) && shootDamage > 0)
             {
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
@@ -99,5 +104,20 @@ public class playerController : MonoBehaviour
     {
         HP -= dmg;
 
+        StartCoroutine(gameManager.instance.playerDamageFlash());
+
+        if(HP <= 0)
+        {
+            gameManager.instance.playerDeadMenu.SetActive(true);
+            gameManager.instance.pauseGame();
+        }    
+    }
+
+    public void playerRespawn()
+    {
+        controller.enabled = false;
+        transform.position = gameManager.instance.spawnPos.transform.position;
+        HP = HPOrig;
+        controller.enabled = true;
     }
 }

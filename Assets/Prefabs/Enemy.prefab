@@ -87,7 +87,7 @@ MonoBehaviour:
   playerFaceSpeed: 8
   bullet: {fileID: 1074046604343275969, guid: 54d995559028dd94cb2d93039a128a45, type: 3}
   shootPos: {fileID: 6429626199632901257}
-  shootRate: 2
+  shootRate: 1
 --- !u!195 &247011349556935987
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 79c89c27ca4492a4d8dcc4a0ccfc297d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

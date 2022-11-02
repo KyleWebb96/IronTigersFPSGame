@@ -12,6 +12,10 @@ public class gameManager : MonoBehaviour
 
     [Header("----- UI -----")]
     public GameObject pauseMenu;
+    public GameObject playerDeadMenu;
+    public GameObject playerDamageScreen;
+
+    public GameObject spawnPos;
 
     public bool isPaused;
 
@@ -21,12 +25,13 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        spawnPos = GameObject.FindGameObjectWithTag("Spawn Pos");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
@@ -51,4 +56,13 @@ public class gameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public IEnumerator playerDamageFlash()
+    {
+        playerDamageScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        playerDamageScreen.SetActive(false);
+    }
+
+
 }
