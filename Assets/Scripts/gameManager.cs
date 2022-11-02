@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using TMPro; 
 
 public class gameManager : MonoBehaviour
 {
@@ -15,9 +17,9 @@ public class gameManager : MonoBehaviour
     public GameObject playerDeadMenu;
     public GameObject winMenu;
     public GameObject playerDamageScreen;
+    public TextMeshProUGUI enemiesLeft; 
 
     public int enemiesToKill;
-
     public GameObject spawnPos;
 
     public bool isPaused;
@@ -76,8 +78,14 @@ public class gameManager : MonoBehaviour
     public void updateEnemyNumber()
     {
         enemiesToKill--;
+        updateUI();
+
         if (enemiesToKill <= 0)
             youWin();
     }
 
+    public void updateUI()
+    {
+        enemiesLeft.text = enemiesToKill.ToString("F0");
+    }
 }

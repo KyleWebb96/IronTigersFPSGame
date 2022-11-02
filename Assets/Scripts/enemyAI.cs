@@ -27,6 +27,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         gameManager.instance.enemiesToKill++;
+        gameManager.instance.updateUI();
     }
 
     // Update is called once per frame
