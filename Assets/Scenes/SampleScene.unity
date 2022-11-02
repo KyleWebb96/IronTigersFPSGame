@@ -419,10 +419,6 @@ PrefabInstance:
       propertyPath: spawnPos
       value: 
       objectReference: {fileID: 652019564}
-    - target: {fileID: 2743323564423239954, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: respawn
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
 --- !u!1001 &2905461681533867533
@@ -492,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 2737371835119330578, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794352204193157723, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
+      propertyPath: HP
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8052145903730014532, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
       propertyPath: m_RootOrder

@@ -13,7 +13,10 @@ public class gameManager : MonoBehaviour
     [Header("----- UI -----")]
     public GameObject pauseMenu;
     public GameObject playerDeadMenu;
+    public GameObject winMenu;
     public GameObject playerDamageScreen;
+
+    public int enemiesToKill;
 
     public GameObject spawnPos;
 
@@ -31,7 +34,7 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
@@ -64,5 +67,17 @@ public class gameManager : MonoBehaviour
         playerDamageScreen.SetActive(false);
     }
 
+    public void youWin()
+    {
+        winMenu.SetActive(true);
+        pauseGame();
+    }
+
+    public void updateEnemyNumber()
+    {
+        enemiesToKill--;
+        if (enemiesToKill <= 0)
+            youWin();
+    }
 
 }
