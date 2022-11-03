@@ -19,6 +19,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] float shootRate;
 
+    Color origColor;
     bool isShooting;
     bool playerInRange;
     Vector3 playerDir;
@@ -26,6 +27,7 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        origColor = GetComponent<MeshRenderer>().material.color;
         gameManager.instance.enemiesToKill++;
         gameManager.instance.updateUI();
     }
@@ -80,7 +82,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(0.15f);
 
-        model.material.color = Color.blue;
+        model.material.color = origColor;
     }
     IEnumerator shoot()
     {
