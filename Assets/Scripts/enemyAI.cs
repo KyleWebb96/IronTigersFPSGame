@@ -33,10 +33,14 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(gameManager.instance.player.transform.position);
-
+        if(gameManager.instance.playerDeadMenu.activeSelf)
+        {
+            playerInRange = false;
+        }
         if (playerInRange)
         {
+            //agent.SetDestination(gameManager.instance.player.transform.position);
+
             playerDir = (gameManager.instance.player.transform.position - transform.position);
 
             facePlayer();
@@ -94,6 +98,7 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = true;
         }
+        
     }
     public void OnTriggerExit(Collider other)
     {

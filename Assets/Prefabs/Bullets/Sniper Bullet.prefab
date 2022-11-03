@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1074046604343275971}
   - component: {fileID: 1074046604343275970}
   m_Layer: 7
-  m_Name: Bullet
+  m_Name: Sniper Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1074046604343275971}
-  damage: 1
-  speed: 10
-  timer: 3
+  damage: 7
+  speed: 4
+  timer: 20
 --- !u!33 &1074046604343275981
 MeshFilter:
   m_ObjectHideFlags: 0
