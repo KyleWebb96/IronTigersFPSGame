@@ -113,6 +113,13 @@ public class playerController : MonoBehaviour
         }    
     }
 
+    public void gunPickup(gunStats gunStat)
+    {
+        shootRate = gunStat.shootRate;
+        shootDist = gunStat.shootDist;
+        shootDamage = gunStat.shootDamage;
+    }
+
     public void playerRespawn()
     {
         controller.enabled = false;
