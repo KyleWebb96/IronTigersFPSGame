@@ -13,6 +13,10 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("---- Enemy Stats ----")]
     [SerializeField] int HP;
     [SerializeField] int playerFaceSpeed;
+    [SerializeField] int speedChase;
+    [SerializeField] int sightDist;
+    [SerializeField] int sightAngle;
+    [SerializeField] GameObject headPos;
 
     [Header("---- Gun Stats ----")]
     [SerializeField] GameObject bullet;
@@ -23,6 +27,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool isShooting;
     bool playerInRange;
     Vector3 playerDir;
+    float angleToPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -35,21 +40,37 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.instance.playerDeadMenu.activeSelf)
+
+
+        playerDir = (gameManager.instance.player.transform.position - headPos.transform.position);
+
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        if (gameManager.instance.playerDeadMenu.activeSelf)
         {
             playerInRange = false;
         }
-        if (playerInRange)
+        if (playerInRange && angleToPlayer <= sightAngle)
         {
-            //agent.SetDestination(gameManager.instance.player.transform.position);
+            canSeePlayer();
+        }
+    }
 
-            playerDir = (gameManager.instance.player.transform.position - transform.position);
-
-            facePlayer();
-
-            if (!isShooting)
+    void canSeePlayer()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(headPos.transform.position, playerDir, out hit))
+        {
+            if(hit.collider.CompareTag("Player") && angleToPlayer <= sightAngle)
             {
-                StartCoroutine(shoot());
+                agent.SetDestination(gameManager.instance.player.transform.position);
+
+                facePlayer();
+
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+                }
             }
         }
     }
