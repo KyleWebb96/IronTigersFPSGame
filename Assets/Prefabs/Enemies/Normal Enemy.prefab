@@ -121,11 +121,12 @@ Transform:
   m_GameObject: {fileID: 2737371835119330578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.449282, y: 1, z: -45}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.54038, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6429626199632901257}
   - {fileID: 8672047838298059807}
+  - {fileID: 8201950073415817665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,6 +146,10 @@ MonoBehaviour:
   agent: {fileID: 247011349556935987}
   HP: 3
   playerFaceSpeed: 8
+  speedChase: 0
+  sightDist: 0
+  sightAngle: 0
+  headPos: {fileID: 0}
   bullet: {fileID: 1074046604343275969, guid: 54d995559028dd94cb2d93039a128a45, type: 3}
   shootPos: {fileID: 6429626199632901257}
   shootRate: 1
@@ -245,5 +250,36 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4905639355093586832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8201950073415817665}
+  m_Layer: 0
+  m_Name: gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8201950073415817665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905639355093586832}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.09018135, y: 0, z: -0.20401001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8052145903730014532}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
