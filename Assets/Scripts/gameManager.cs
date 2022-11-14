@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using TMPro; 
 
@@ -18,11 +19,16 @@ public class gameManager : MonoBehaviour
     public GameObject winMenu;
     public GameObject playerDamageScreen;
     public TextMeshProUGUI enemiesLeft; 
+    public Image HPBar;
+    public Image HPBarAnim;
+
 
     public int enemiesToKill;
     public GameObject spawnPos;
 
     public bool isPaused;
+
+    float HPTimer = 0f;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,6 +52,13 @@ public class gameManager : MonoBehaviour
             else
                 unPauseGame();
         }
+
+        if(HPBarAnim.fillAmount != HPBar.fillAmount)
+        {
+            HPBarAnim.fillAmount = Mathf.Lerp(HPBarAnim.fillAmount, HPBar.fillAmount, HPTimer);
+            HPTimer += 0.25f * Time.deltaTime;
+        }
+        else { HPTimer = 0f; }
     }
 
     public void pauseGame()

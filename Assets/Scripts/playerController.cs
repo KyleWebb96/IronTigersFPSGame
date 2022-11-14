@@ -39,6 +39,7 @@ public class playerController : MonoBehaviour
         playerSpeedOrig = playerSpeed;
         HPOrig = HP;
         playerRespawn();
+        updatePlayerHPBar();
     }
 
     void Update()
@@ -47,7 +48,6 @@ public class playerController : MonoBehaviour
         sprint();
         StartCoroutine(shoot());
         gunSelect(); 
-
     }
 
     void movement()
@@ -112,6 +112,7 @@ public class playerController : MonoBehaviour
     public void damage(int dmg)
     {
         HP -= dmg;
+        updatePlayerHPBar();
 
         StartCoroutine(gameManager.instance.playerDamageFlash());
 
@@ -120,6 +121,11 @@ public class playerController : MonoBehaviour
             gameManager.instance.playerDeadMenu.SetActive(true);
             gameManager.instance.pauseGame();
         }    
+    }
+
+    void updatePlayerHPBar()
+    {
+        gameManager.instance.HPBar.fillAmount = (float)HP / (float)HPOrig;
     }
 
     public void gunPickup(gunStats gunStat)
@@ -167,5 +173,6 @@ public class playerController : MonoBehaviour
         transform.position = gameManager.instance.spawnPos.transform.position;
         HP = HPOrig;
         controller.enabled = true;
+        updatePlayerHPBar();
     }
 }

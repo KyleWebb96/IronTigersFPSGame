@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class enemyAI : MonoBehaviour, IDamage
@@ -9,6 +10,9 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----  Components ----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] GameObject UI;
+    [SerializeField] Image HPBar;
+    [SerializeField] Image HPBarAnim;
 
 
     [Header("---- Enemy Stats ----")]
@@ -33,15 +37,20 @@ public class enemyAI : MonoBehaviour, IDamage
     float distToPlayer;
     Vector3 startingPos;
     float stoppingDistOrig;
+    int HPOrig;
+
+    float HPTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        HPOrig = HP;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         origColor = GetComponent<MeshRenderer>().material.color;
         gameManager.instance.enemiesToKill++;
         gameManager.instance.updateUI();
+        updateHPBar();
     }
 
     // Update is called once per frame
@@ -68,6 +77,13 @@ public class enemyAI : MonoBehaviour, IDamage
                 roam();
             }
         }
+
+        if(HPBarAnim.fillAmount != HPBar.fillAmount)
+        {
+            HPBarAnim.fillAmount = Mathf.Lerp(HPBarAnim.fillAmount, HPBar.fillAmount, HPTimer);
+            HPTimer += 0.25f * Time.deltaTime;
+        }
+        else { HPTimer = 0f; }
     }
 
     void canSeePlayer()
@@ -130,6 +146,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int dmg)
     {
         HP -= dmg;
+        updateHPBar();
 
         agent.stoppingDistance = 0;
         agent.SetDestination(gameManager.instance.player.transform.position);
@@ -141,6 +158,11 @@ public class enemyAI : MonoBehaviour, IDamage
             gameManager.instance.updateEnemyNumber();
             Destroy(gameObject);
         }
+    }
+
+    void updateHPBar()
+    {
+        HPBar.fillAmount = (float)HP / (float)HPOrig;
     }
 
     IEnumerator flashDamage()
