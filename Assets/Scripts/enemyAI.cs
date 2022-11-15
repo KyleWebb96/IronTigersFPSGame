@@ -13,6 +13,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject UI;
     [SerializeField] Image HPBar;
     [SerializeField] Image HPBarAnim;
+    [SerializeField] AudioSource aud;
 
 
     [Header("---- Enemy Stats ----")]
@@ -28,6 +29,12 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] float shootRate;
+
+    [Header("---- Audio ----")]
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audShoot;
+    [Range(0, 1)][SerializeField] float audShootVol;
 
     Color origColor;
     bool isShooting;
@@ -54,8 +61,6 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-
-
         playerDir = (gameManager.instance.player.transform.position - headPos.transform.position);
 
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
@@ -144,6 +149,9 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int dmg)
     {
         HP -= dmg;
+
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+
         updateHPBar();
 
         agent.stoppingDistance = 0;
@@ -174,6 +182,8 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+
+        aud.PlayOneShot(audShoot[0], audShootVol);
 
         Instantiate(bullet, shootPos.position, transform.rotation);
 

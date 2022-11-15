@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour
 {
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
+    [SerializeField] AudioSource aud;
 
     [Header("----- Player Stats -----")]
     [SerializeField] int HP;
@@ -22,8 +23,15 @@ public class playerController : MonoBehaviour
     [SerializeField] int shootDamage;
     [SerializeField] GameObject gunModel;
     [SerializeField] List<gunStats> gunStatList = new List<gunStats>();
-    [SerializeField] GameObject hitEffect; 
+    [SerializeField] GameObject hitEffect;
 
+    [Header("---- Audio ----")]
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audShoot;
+    [Range(0, 1)][SerializeField] float audShootVol;
 
     Vector3 move;
     private Vector3 playerVelocity;
@@ -65,6 +73,7 @@ public class playerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && jumpsTimes < jumpsMax)
         {
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpsTimes++;
             playerVelocity.y = jumpHeight;
         }
@@ -92,6 +101,8 @@ public class playerController : MonoBehaviour
         {
             isShooting = true;
 
+            aud.PlayOneShot(audShoot[0], audShootVol);
+
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist) && shootDamage > 0)
             {
@@ -112,6 +123,9 @@ public class playerController : MonoBehaviour
     public void damage(int dmg)
     {
         HP -= dmg;
+
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+
         updatePlayerHPBar();
 
         StartCoroutine(gameManager.instance.playerDamageFlash());
