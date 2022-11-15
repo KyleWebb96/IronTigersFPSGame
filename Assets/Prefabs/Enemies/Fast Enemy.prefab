@@ -289,6 +289,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6379621335844527761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933584005410962539}
+  m_Layer: 0
+  m_Name: headPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933584005410962539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379621335844527761}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.72440064, z: 0}
+  m_LocalScale: {x: 1.4479324, y: 1.4479324, z: 1.4479324}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4596336233298723226}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7020468603131110782
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +347,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7020468603131110782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 75.29248}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.6112591, y: 1.4479324, z: 1.4479324}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -326,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -62.405884, y: 4.6936207}
+  m_AnchoredPosition: {x: 0, y: 1.4485143}
   m_SizeDelta: {x: 3, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &38547442397472139
@@ -453,6 +484,7 @@ Transform:
   - {fileID: 670211215407926359}
   - {fileID: 1206651263}
   - {fileID: 599297280463239067}
+  - {fileID: 1933584005410962539}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -470,16 +502,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 8802028107176292117}
   agent: {fileID: 5988099726818543085}
-  UI: {fileID: 0}
-  HPBar: {fileID: 0}
-  HPBarAnim: {fileID: 0}
+  UI: {fileID: 7020468603131110782}
+  HPBar: {fileID: 5626723332421804492}
+  HPBarAnim: {fileID: 2306166479516124851}
   HP: 1
   playerFaceSpeed: 2
   speedChase: 0
   sightDist: 0
   sightAngle: 0
   roamDist: 0
-  headPos: {fileID: 0}
+  headPos: {fileID: 6379621335844527761}
   bullet: {fileID: 1074046604343275969, guid: 54d995559028dd94cb2d93039a128a45, type: 3}
   shootPos: {fileID: 670211215407926359}
   shootRate: 0.35

@@ -86,7 +86,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875052731907171345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 52}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1128, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -96,7 +96,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -15, y: 1.620801}
+  m_AnchoredPosition: {x: 0, y: 1.250351}
   m_SizeDelta: {x: 3, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2374107052221911722
@@ -309,6 +309,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6903351502189973164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7981734801901403958}
+  m_Layer: 0
+  m_Name: headPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7981734801901403958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903351502189973164}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7502501, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3768150845366341652}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8815178445349886532
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +408,7 @@ Transform:
   - {fileID: 202468218919345625}
   - {fileID: 30345291}
   - {fileID: 4926316323920843028}
+  - {fileID: 7981734801901403958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -394,16 +426,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 8189034668262047387}
   agent: {fileID: 6383956584900531299}
-  UI: {fileID: 0}
-  HPBar: {fileID: 0}
-  HPBarAnim: {fileID: 0}
+  UI: {fileID: 875052731907171345}
+  HPBar: {fileID: 4178487905381927496}
+  HPBarAnim: {fileID: 3815128406114714171}
   HP: 3
   playerFaceSpeed: 8
   speedChase: 0
   sightDist: 0
   sightAngle: 0
   roamDist: 0
-  headPos: {fileID: 0}
+  headPos: {fileID: 6903351502189973164}
   bullet: {fileID: 1074046604343275969, guid: 9dad7172ff7147f40bc31c01d6e4e8c6, type: 3}
   shootPos: {fileID: 202468218919345625}
   shootRate: 6

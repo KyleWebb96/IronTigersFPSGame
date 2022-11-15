@@ -48,8 +48,6 @@ public class enemyAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         origColor = GetComponent<MeshRenderer>().material.color;
-        gameManager.instance.enemiesToKill++;
-        gameManager.instance.updateUI();
         updateHPBar();
     }
 
