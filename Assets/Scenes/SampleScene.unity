@@ -1416,7 +1416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &98836232
 Transform:
   m_ObjectHideFlags: 0
@@ -9221,7 +9221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &579803761
 Transform:
   m_ObjectHideFlags: 0
@@ -16887,7 +16887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1067042006
 Transform:
   m_ObjectHideFlags: 0
@@ -33891,6 +33891,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 364836884, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -33898,6 +33899,11 @@ PrefabInstance:
     - target: {fileID: 934101009, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
       propertyPath: m_FillAmount
       value: 1
+=======
+    - target: {fileID: 934101009, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.852
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 1249487346468249344, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
       propertyPath: m_Pivot.x
