@@ -22,16 +22,16 @@ public class playerController : MonoBehaviour
     [SerializeField] int shootDist;
     [SerializeField] int shootDamage;
     [SerializeField] GameObject gunModel;
-    [SerializeField] List<gunStats> gunStatList = new List<gunStats>();
+    public List<gunStats> gunStatList = new List<gunStats>();
     [SerializeField] GameObject hitEffect;
 
     [Header("---- Audio ----")]
     [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)][SerializeField] float audJumpVol;
+    [Range(0, 1)] [SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audHurt;
-    [Range(0, 1)][SerializeField] float audHurtVol;
+    [Range(0, 1)] [SerializeField] float audHurtVol;
     [SerializeField] AudioClip[] audShoot;
-    [Range(0, 1)][SerializeField] float audShootVol;
+    [Range(0, 1)] [SerializeField] float audShootVol;
 
     Vector3 move;
     private Vector3 playerVelocity;
@@ -40,7 +40,7 @@ public class playerController : MonoBehaviour
     bool isSprinting;
     bool isShooting;
     int HPOrig;
-    int selectedGun; 
+    public int selectedGun;
 
     private void Start()
     {
@@ -48,6 +48,7 @@ public class playerController : MonoBehaviour
         HPOrig = HP;
         playerRespawn();
         updatePlayerHPBar();
+        resetGunKills();
     }
 
     void Update()
@@ -55,7 +56,7 @@ public class playerController : MonoBehaviour
         movement();
         sprint();
         StartCoroutine(shoot());
-        gunSelect(); 
+        //gunSelect(); 
     }
 
     void movement()
@@ -117,6 +118,21 @@ public class playerController : MonoBehaviour
 
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
+
+            if (gunStatList[selectedGun].kills >= 5)
+            {
+                gunStatList[selectedGun].kills = 0;
+                gunStatList.RemoveAt(0);
+            }
+
+            if (gunStatList.Count > 0)
+            {
+                changeGuns();
+            }
+            else
+            {
+                gameManager.instance.youWin();
+            }
         }
     }
 
@@ -130,11 +146,11 @@ public class playerController : MonoBehaviour
 
         StartCoroutine(gameManager.instance.playerDamageFlash());
 
-        if(HP <= 0)
+        if (HP <= 0)
         {
             gameManager.instance.playerDeadMenu.SetActive(true);
             gameManager.instance.pauseGame();
-        }    
+        }
     }
 
     void updatePlayerHPBar()
@@ -142,32 +158,40 @@ public class playerController : MonoBehaviour
         gameManager.instance.HPBar.fillAmount = (float)HP / (float)HPOrig;
     }
 
-    public void gunPickup(gunStats gunStat)
+    //public void gunPickup(gunStats gunStat)
+    //{
+    //    shootRate = gunStat.shootRate;
+    //    shootDist = gunStat.shootDist;
+    //    shootDamage = gunStat.shootDamage;
+
+    //    gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
+    //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial; 
+
+    //    gunStatList.Add(gunStat);
+    //}
+
+    //void gunSelect()
+    //{
+    //    if(gunStatList.Count > 1)
+    //    {
+    //        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunStatList.Count - 1)
+    //        {
+    //            selectedGun++;
+    //            changeGuns(); 
+    //        }
+    //        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+    //        {
+    //            selectedGun--;
+    //            changeGuns(); 
+    //        }
+    //    }
+    //}
+
+    void resetGunKills()
     {
-        shootRate = gunStat.shootRate;
-        shootDist = gunStat.shootDist;
-        shootDamage = gunStat.shootDamage;
-
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial; 
-
-        gunStatList.Add(gunStat);
-    }
-
-    void gunSelect()
-    {
-        if(gunStatList.Count > 1)
+        for (int i = 0; i < gunStatList.Count; i++)
         {
-            if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunStatList.Count - 1)
-            {
-                selectedGun++;
-                changeGuns(); 
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
-            {
-                selectedGun--;
-                changeGuns(); 
-            }
+            gunStatList[i].kills = 0;
         }
     }
 

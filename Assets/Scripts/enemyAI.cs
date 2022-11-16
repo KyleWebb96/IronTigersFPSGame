@@ -8,7 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----  Components ----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator anim; 
+    [SerializeField] Animator anim;
     [SerializeField] GameObject UI;
     [SerializeField] Image HPBar;
     [SerializeField] Image HPBarAnim;
@@ -22,7 +22,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int sightDist;
     [SerializeField] int sightAngle;
     [SerializeField] int roamDist;
-    [SerializeField] int animLerpSpeed; 
+    [SerializeField] int animLerpSpeed;
     [SerializeField] GameObject headPos;
 
     [Header("---- Gun Stats ----")]
@@ -32,9 +32,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("---- Audio ----")]
     [SerializeField] AudioClip[] audHurt;
-    [Range(0, 1)][SerializeField] float audHurtVol;
+    [Range(0, 1)] [SerializeField] float audHurtVol;
     [SerializeField] AudioClip[] audShoot;
-    [Range(0, 1)][SerializeField] float audShootVol;
+    [Range(0, 1)] [SerializeField] float audShootVol;
 
     Color origColor;
     bool isShooting;
@@ -78,7 +78,7 @@ public class enemyAI : MonoBehaviour, IDamage
             }
         }
 
-        if(HPBarAnim.fillAmount != HPBar.fillAmount)
+        if (HPBarAnim.fillAmount != HPBar.fillAmount)
         {
             HPBarAnim.fillAmount = Mathf.Lerp(HPBarAnim.fillAmount, HPBar.fillAmount, HPTimer);
             HPTimer += 0.25f * Time.deltaTime;
@@ -97,7 +97,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         RaycastHit hit;
 
-        if(Physics.Raycast(headPos.transform.position, playerDir, out hit))
+        if (Physics.Raycast(headPos.transform.position, playerDir, out hit))
         {
             Debug.DrawRay(headPos.transform.position, playerDir);
 
@@ -166,10 +166,11 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             gameManager.instance.updateEnemyNumber();
+            gameManager.instance.playerScript.gunStatList[0].kills++;
             anim.SetBool("Dead", true);
-            agent.enabled = false;
             UI.SetActive(false);
-            GetComponent<Collider>().enabled = false; 
+            GetComponent<Collider>().enabled = false;
+            agent.enabled = false;
         }
     }
 
@@ -190,7 +191,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         isShooting = true;
 
-        anim.SetTrigger("Shoot"); 
+        anim.SetTrigger("Shoot");
 
         aud.PlayOneShot(audShoot[0], audShootVol);
 
@@ -206,7 +207,7 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = true;
         }
-        
+
     }
     public void OnTriggerExit(Collider other)
     {
@@ -216,3 +217,4 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 }
+

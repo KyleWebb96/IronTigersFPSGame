@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-using TMPro; 
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerDeadMenu;
     public GameObject winMenu;
     public GameObject playerDamageScreen;
-    public TextMeshProUGUI enemiesLeft; 
+    public TextMeshProUGUI enemiesLeft;
     public Image HPBar;
     public Image HPBarAnim;
 
@@ -37,6 +37,8 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         spawnPos = GameObject.FindGameObjectWithTag("Spawn Pos");
+
+
     }
 
     // Update is called once per frame
@@ -53,7 +55,7 @@ public class gameManager : MonoBehaviour
                 unPauseGame();
         }
 
-        if(HPBarAnim.fillAmount != HPBar.fillAmount)
+        if (HPBarAnim.fillAmount != HPBar.fillAmount)
         {
             HPBarAnim.fillAmount = Mathf.Lerp(HPBarAnim.fillAmount, HPBar.fillAmount, HPTimer);
             HPTimer += 0.25f * Time.deltaTime;
