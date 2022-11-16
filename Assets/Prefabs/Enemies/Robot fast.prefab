@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 4316520674169467034}
   agent: {fileID: 511774953950921682}
+  anim: {fileID: 0}
   UI: {fileID: 8660550560867352898}
   HPBar: {fileID: 8660550559440303188}
   HPBarAnim: {fileID: 8660550560225446620}
@@ -245,6 +246,7 @@ MonoBehaviour:
   sightDist: 1
   sightAngle: 45
   roamDist: 30
+  animLerpSpeed: 1
   headPos: {fileID: 8660550560401654788}
   bullet: {fileID: 7423262366738882326, guid: 8a9f3b0d98511ed4ebeeb09fad155b67, type: 3}
   shootPos: {fileID: 8660550559047509826}

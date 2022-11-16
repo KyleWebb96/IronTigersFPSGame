@@ -1,15 +1,14 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 public class enemyAI : MonoBehaviour, IDamage
 {
     [Header("----  Components ----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim; 
     [SerializeField] GameObject UI;
     [SerializeField] Image HPBar;
     [SerializeField] Image HPBarAnim;
@@ -23,6 +22,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int sightDist;
     [SerializeField] int sightAngle;
     [SerializeField] int roamDist;
+    [SerializeField] int animLerpSpeed; 
     [SerializeField] GameObject headPos;
 
     [Header("---- Gun Stats ----")]
@@ -61,11 +61,8 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        playerDir = (gameManager.instance.player.transform.position - headPos.transform.position);
 
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-
-        distToPlayer = Vector3.Distance(playerDir, transform.forward);
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * animLerpSpeed));
 
         //Debug.Log(distToPlayer);
 
@@ -91,6 +88,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void canSeePlayer()
     {
+
+        playerDir = (gameManager.instance.player.transform.position - headPos.transform.position);
+
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        distToPlayer = Vector3.Distance(playerDir, transform.forward);
+
         RaycastHit hit;
 
         if(Physics.Raycast(headPos.transform.position, playerDir, out hit))
@@ -162,7 +166,10 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             gameManager.instance.updateEnemyNumber();
-            Destroy(gameObject);
+            anim.SetBool("Dead", true);
+            agent.enabled = false;
+            UI.SetActive(false);
+            GetComponent<Collider>().enabled = false; 
         }
     }
 
@@ -182,6 +189,8 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+
+        anim.SetTrigger("Shoot"); 
 
         aud.PlayOneShot(audShoot[0], audShootVol);
 
