@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 4316520674169467034}
   agent: {fileID: 511774953950921682}
-  anim: {fileID: 0}
+  anim: {fileID: 3844923242783923798}
   UI: {fileID: 8660550560867352898}
   HPBar: {fileID: 8660550559440303188}
   HPBarAnim: {fileID: 8660550560225446620}
