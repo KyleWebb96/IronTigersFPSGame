@@ -211,7 +211,7 @@ Animator:
   m_GameObject: {fileID: 887737130369915236}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf02b06a21c432840bf9ae99b6177bb3, type: 2}
+  m_Controller: {fileID: 9100000, guid: c063130cba8ddb145a3489ee8d019f21, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -257,6 +257,7 @@ MonoBehaviour:
   audShoot:
   - {fileID: 8300000, guid: 1d4b0fa678274dd46beec9476d2e6105, type: 3}
   audShootVol: 0.5
+  ammoDrop: {fileID: 0}
 --- !u!195 &511774953950921682
 NavMeshAgent:
   m_ObjectHideFlags: 0

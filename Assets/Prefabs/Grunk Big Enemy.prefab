@@ -11177,8 +11177,8 @@ GameObject:
   - component: {fileID: 8078576633906000291}
   - component: {fileID: 8078576633906000290}
   - component: {fileID: 8078576633906000292}
-  - component: {fileID: 8615928834651019424}
   - component: {fileID: 6280199632496874462}
+  - component: {fileID: 8615928834651019424}
   - component: {fileID: 6647915350798777092}
   m_Layer: 6
   m_Name: Grunk Big Enemy
@@ -11194,7 +11194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8078576633896603113}
-  m_LocalRotation: {x: -0, y: 0.97725374, z: -0, w: 0.21207367}
+  m_LocalRotation: {x: 0, y: 0.9772533, z: 0, w: 0.2120755}
   m_LocalPosition: {x: 15.152016, y: 0.083333336, z: 26.245234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11206,7 +11206,7 @@ Transform:
   - {fileID: 3318341560510514752}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 155.512, z: 0}
 --- !u!114 &8078576633906000293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11245,6 +11245,7 @@ MonoBehaviour:
   audShoot:
   - {fileID: 8300000, guid: 1d4b0fa678274dd46beec9476d2e6105, type: 3}
   audShootVol: 0.5
+  ammoDrop: {fileID: 2035429025467733898, guid: 957bf26a3a385614e8ae59cb5c2e30bc, type: 3}
 --- !u!95 &8078576633906000291
 Animator:
   serializedVersion: 4
@@ -11329,19 +11330,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8615928834651019424
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8078576633896603113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 30
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &6280199632496874462
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11356,6 +11344,19 @@ CapsuleCollider:
   m_Height: 7.8002405
   m_Direction: 1
   m_Center: {x: 0, y: 3.5930774, z: 0}
+--- !u!135 &8615928834651019424
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078576633896603113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &6647915350798777092
 AudioSource:
   m_ObjectHideFlags: 0

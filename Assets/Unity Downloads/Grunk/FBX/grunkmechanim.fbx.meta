@@ -2097,12 +2097,22 @@ ModelImporter:
   - first:
       137: 13700002
     second: Plane_002_Plane_006
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grunk
+    second: {fileID: 2100000, guid: 57721ef0365687041932a5a021bff2c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrunkGun
+    second: {fileID: 2100000, guid: 21e1d3455893a8945b1c727efb76ef13, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1
     materialSearch: 0
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

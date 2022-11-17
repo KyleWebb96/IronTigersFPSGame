@@ -58,6 +58,8 @@ public class playerController : MonoBehaviour
         updatePlayerHPBar();
         resetGunKills();
         gameManager.instance.updateUIAmmo();
+        changeGuns();
+        currAmmo = gunStatList[0].ammoCount;
     }
 
     void Update()
@@ -262,9 +264,9 @@ public class playerController : MonoBehaviour
 
             aud.PlayOneShot(reloadAud, reloadAudVol);
 
-            yield return new WaitForSeconds(reloadTime);
-
             gameManager.instance.updateUIAmmo();
+
+            yield return new WaitForSeconds(reloadTime);
 
             isReloading = false;
         }
