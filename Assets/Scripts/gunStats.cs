@@ -11,6 +11,7 @@ public class gunStats : ScriptableObject
     public int shootDist;
     public int shootDamage;
     public int ammoCount;
+    public float reloadTime;
     public int kills;
 
     [Header("----- Gun Components -----")]

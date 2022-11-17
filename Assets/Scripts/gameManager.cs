@@ -19,6 +19,8 @@ public class gameManager : MonoBehaviour
     public GameObject winMenu;
     public GameObject playerDamageScreen;
     public TextMeshProUGUI enemiesLeft;
+    public TextMeshProUGUI ammoLeft;
+    public TextMeshProUGUI totalAmmo;
     public Image HPBar;
     public Image HPBarAnim;
 
@@ -102,5 +104,11 @@ public class gameManager : MonoBehaviour
     {
         enemiesToKill += amount;
         enemiesLeft.text = enemiesToKill.ToString("F0");
+    }
+
+    public void updateUIAmmo()
+    {
+        ammoLeft.text = playerScript.currAmmo.ToString("F0");
+        totalAmmo.text = playerScript.totalAmmo.ToString("F0");
     }
 }

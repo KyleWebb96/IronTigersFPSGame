@@ -244,12 +244,20 @@ MonoBehaviour:
   jumpHeight: 12
   gravityValue: 35
   jumpsMax: 2
+  totalAmmo: 45
   shootRate: 0.1
   shootDist: 50
   shootDamage: 1
+  gunAmmo: 0
+  reloadTime: 0
   gunModel: {fileID: 2120149350}
-  gunStatList: []
-  hitEffect: {fileID: 0}
+  gunStatList:
+  - {fileID: 11400000, guid: 909c616e340415240a3edeca6e46419b, type: 2}
+  - {fileID: 11400000, guid: d8001ac237f6a5f4e91947fad046e1a8, type: 2}
+  - {fileID: 11400000, guid: b5c7b96fb9206e047bd30499d1386e1a, type: 2}
+  - {fileID: 11400000, guid: cd19a00b1985ea64a8a7188402bae28b, type: 2}
+  - {fileID: 11400000, guid: 88ffb1402381bd0499bcbd56c3b05b0b, type: 2}
+  hitEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   audJump:
   - {fileID: 8300000, guid: 55c14ca7a259c2c44a4d2a311ae2ebb2, type: 3}
   - {fileID: 8300000, guid: 9636f487ca233d84f9a636099a6f0057, type: 3}
@@ -263,6 +271,10 @@ MonoBehaviour:
   audShoot:
   - {fileID: 8300000, guid: 3c3810f9cc4809e4c8249fd51345a30a, type: 3}
   audShootVol: 0.5
+  reloadAud: {fileID: 8300000, guid: e9a2f07e5e042a3498755a2710b92cb8, type: 3}
+  reloadAudVol: 0.5
+  selectedGun: 0
+  currAmmo: 0
 --- !u!143 &3417099386280366664
 CharacterController:
   m_ObjectHideFlags: 0

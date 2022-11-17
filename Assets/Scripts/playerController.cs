@@ -16,11 +16,14 @@ public class playerController : MonoBehaviour
     [SerializeField] float jumpHeight;
     [SerializeField] float gravityValue;
     [SerializeField] int jumpsMax;
+    [SerializeField] public int totalAmmo;
 
     [Header("----- Gun Stats -----")]
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
     [SerializeField] int shootDamage;
+    [SerializeField] int gunAmmo;
+    [SerializeField] float reloadTime;
     [SerializeField] GameObject gunModel;
     public List<gunStats> gunStatList = new List<gunStats>();
     [SerializeField] GameObject hitEffect;
@@ -32,6 +35,9 @@ public class playerController : MonoBehaviour
     [Range(0, 1)] [SerializeField] float audHurtVol;
     [SerializeField] AudioClip[] audShoot;
     [Range(0, 1)] [SerializeField] float audShootVol;
+    [SerializeField] AudioClip reloadAud;
+    [Range(0, 1)][SerializeField] float reloadAudVol;
+
 
     Vector3 move;
     private Vector3 playerVelocity;
@@ -39,8 +45,10 @@ public class playerController : MonoBehaviour
     float playerSpeedOrig;
     bool isSprinting;
     bool isShooting;
+    bool isReloading;
     int HPOrig;
     public int selectedGun;
+    public int currAmmo;
 
     private void Start()
     {
@@ -49,6 +57,7 @@ public class playerController : MonoBehaviour
         playerRespawn();
         updatePlayerHPBar();
         resetGunKills();
+        gameManager.instance.updateUIAmmo();
     }
 
     void Update()
@@ -57,6 +66,7 @@ public class playerController : MonoBehaviour
         sprint();
         StartCoroutine(shoot());
         //gunSelect(); 
+        StartCoroutine(reload());
     }
 
     void movement()
@@ -98,7 +108,12 @@ public class playerController : MonoBehaviour
     }
     IEnumerator shoot()
     {
-        if (gunStatList.Count > 0 && !isShooting && Input.GetButton("Shoot"))
+        if (!gameManager.instance.isPaused 
+            && gunStatList.Count > 0 
+            && !isShooting 
+            && !isReloading
+            && Input.GetButton("Shoot")
+            && currAmmo > 0)
         {
             isShooting = true;
 
@@ -115,6 +130,8 @@ public class playerController : MonoBehaviour
                 Instantiate(hitEffect, hit.point, hitEffect.transform.rotation);
             }
 
+            currAmmo--;
+            gameManager.instance.updateUIAmmo();
 
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
@@ -133,6 +150,10 @@ public class playerController : MonoBehaviour
             {
                 gameManager.instance.youWin();
             }
+        }
+        else if(currAmmo <= 0)
+        {
+            StartCoroutine(reload());
         }
     }
 
@@ -163,6 +184,8 @@ public class playerController : MonoBehaviour
     //    shootRate = gunStat.shootRate;
     //    shootDist = gunStat.shootDist;
     //    shootDamage = gunStat.shootDamage;
+    //    reloadTime = gunStat.reloadTime;
+    //    gunAmmo = gunStat.ammoCount;
 
     //    gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
     //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial; 
@@ -200,9 +223,51 @@ public class playerController : MonoBehaviour
         shootRate = gunStatList[selectedGun].shootRate;
         shootDist = gunStatList[selectedGun].shootDist;
         shootDamage = gunStatList[selectedGun].shootDamage;
+        reloadTime = gunStatList[selectedGun].reloadTime;
+        gunAmmo = gunStatList[selectedGun].ammoCount;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunStatList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStatList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    public void ammoObjectPickup(ammoPickup ammo)
+    {
+        totalAmmo += ammo.ammoAmount;
+        gameManager.instance.updateUIAmmo();
+    }
+
+    IEnumerator reload()
+    {
+        if((Input.GetButtonDown("Reload") || currAmmo <= 0)
+            && currAmmo != gunAmmo 
+            && gunStatList.Count != 0
+            && !isShooting
+            && !isReloading
+            && totalAmmo > 0)
+        {
+            isReloading = true;
+
+            int ammoDelta = gunAmmo - currAmmo;
+
+            if(ammoDelta < totalAmmo)
+            {
+                totalAmmo -= ammoDelta;
+                currAmmo = gunAmmo;
+            }
+            else
+            {
+                currAmmo += totalAmmo;
+                totalAmmo -= totalAmmo;
+            }
+
+            aud.PlayOneShot(reloadAud, reloadAudVol);
+
+            yield return new WaitForSeconds(reloadTime);
+
+            gameManager.instance.updateUIAmmo();
+
+            isReloading = false;
+        }
     }
 
     public void playerRespawn()
