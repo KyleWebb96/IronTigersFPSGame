@@ -56,6 +56,7 @@ public class playerController : MonoBehaviour
         HPOrig = HP;
         playerRespawn();
         updatePlayerHPBar();
+        changeGuns();
         resetGunKills();
         gameManager.instance.updateUIAmmo();
     }
