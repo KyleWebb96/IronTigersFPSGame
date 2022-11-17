@@ -23,6 +23,7 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI totalAmmo;
     public Image HPBar;
     public Image HPBarAnim;
+    public GameObject getKills;
 
 
     public int enemiesToKill;
@@ -72,6 +73,14 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    public IEnumerator getFiveKills()
+    {
+        getKills.SetActive(true);
+        yield return new WaitForSeconds(5);
+        getKills.SetActive(false);
+
+    }
+
     public void unPauseGame()
     {
         Time.timeScale = 1;
@@ -95,9 +104,6 @@ public class gameManager : MonoBehaviour
     public void updateEnemyNumber()
     {
         updateUIEnemyCount(-1);
-
-        if (enemiesToKill <= 0)
-            youWin();
     }
 
     public void updateUIEnemyCount(int amount)

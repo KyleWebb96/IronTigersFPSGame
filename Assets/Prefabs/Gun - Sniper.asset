@@ -16,6 +16,8 @@ MonoBehaviour:
   shootDist: 500
   shootDamage: 10
   ammoCount: 5
+  reloadTime: 5
+  kills: 0
   gunModel: {fileID: 919132149155446097, guid: 60d91f925d8c1e442bb6596dfb94ffff, type: 3}
   hitEffect: {fileID: 0}
   muzzleFlash: {fileID: 0}

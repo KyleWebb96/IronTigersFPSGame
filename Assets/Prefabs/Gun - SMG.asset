@@ -16,6 +16,7 @@ MonoBehaviour:
   shootDist: 60
   shootDamage: 1
   ammoCount: 30
+  reloadTime: 3
   kills: 0
   gunModel: {fileID: 0}
   hitEffect: {fileID: 0}

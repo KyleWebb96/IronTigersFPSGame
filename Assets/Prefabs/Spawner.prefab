@@ -140,9 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 2737371835119330578, guid: a5cbaf60b5493754781c727668141a6b, type: 3}
-  - {fileID: 8469747338406321612, guid: 499b81069cde72c4b93dd9dc5c18ce88, type: 3}
-  - {fileID: 8664653713030738292, guid: bf44a9161b940be4684629ae736456af, type: 3}
+  - {fileID: 5771062729107834254, guid: d413f99f8e1ab0149bc9aa84326ceeb2, type: 3}
+  - {fileID: 821274487893798672, guid: a6ac337233f50494e8fc5bd4dd29b5e4, type: 3}
+  - {fileID: 887737130369915236, guid: 06b34228415693f4bb1f53238688e2e4, type: 3}
   spawnPos:
   - {fileID: 3249415902061896975}
   - {fileID: 3249415901400606607}
@@ -162,7 +162,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3249415901757918172
 Rigidbody:
