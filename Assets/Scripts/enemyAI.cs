@@ -45,7 +45,6 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float stoppingDistOrig;
     int HPOrig;
-    public GameObject ammoDrop;
 
     float HPTimer = 0f;
 
@@ -172,13 +171,6 @@ public class enemyAI : MonoBehaviour, IDamage
             UI.SetActive(false);
             GetComponent<Collider>().enabled = false;
             agent.enabled = false;
-
-            int chanceForAmmo = Random.Range(0, 101);
-
-            if(chanceForAmmo > 50)
-            {
-                Instantiate(ammoDrop, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
-            }
         }
     }
 
