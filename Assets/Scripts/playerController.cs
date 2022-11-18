@@ -16,13 +16,13 @@ public class playerController : MonoBehaviour
     [SerializeField] float jumpHeight;
     [SerializeField] float gravityValue;
     [SerializeField] int jumpsMax;
-    [SerializeField] public int totalAmmo;
+    [SerializeField] public float totalAmmo;
 
     [Header("----- Gun Stats -----")]
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
     [SerializeField] int shootDamage;
-    [SerializeField] int gunAmmo;
+    [SerializeField] float gunAmmo;
     [SerializeField] float reloadTime;
     [SerializeField] GameObject gunModel;
     public List<gunStats> gunStatList = new List<gunStats>();
@@ -48,7 +48,7 @@ public class playerController : MonoBehaviour
     bool isReloading;
     int HPOrig;
     public int selectedGun;
-    public int currAmmo;
+    public float currAmmo;
 
     private void Start()
     {
@@ -69,6 +69,7 @@ public class playerController : MonoBehaviour
         StartCoroutine(shoot());
         //gunSelect(); 
         StartCoroutine(reload());
+        reloadAlert();
     }
 
     void movement()
@@ -142,20 +143,22 @@ public class playerController : MonoBehaviour
             {
                 gunStatList[selectedGun].kills = 0;
                 gunStatList.RemoveAt(0);
+                if (gunStatList.Count > 0)
+                {
+                    changeGuns();
+                }
+                else
+                {
+                    gameManager.instance.youWin();
+                }
             }
 
-            if (gunStatList.Count > 0)
-            {
-                changeGuns();
-            }
-            else
-            {
-                gameManager.instance.youWin();
-            }
+
         }
         else if(currAmmo <= 0)
         {
             StartCoroutine(reload());
+            
         }
     }
 
@@ -231,6 +234,8 @@ public class playerController : MonoBehaviour
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunStatList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStatList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        currAmmo = gunStatList[(selectedGun)].ammoCount;
     }
 
     public void ammoObjectPickup(ammoPickup ammo)
@@ -250,7 +255,7 @@ public class playerController : MonoBehaviour
         {
             isReloading = true;
 
-            int ammoDelta = gunAmmo - currAmmo;
+            float ammoDelta = gunAmmo - currAmmo;
 
             if(ammoDelta < totalAmmo)
             {
@@ -263,17 +268,28 @@ public class playerController : MonoBehaviour
                 totalAmmo -= totalAmmo;
             }
 
+            gameManager.instance.Reloading.SetActive(true);
+
             yield return new WaitForSeconds(reloadTime);
 
-            aud.PlayOneShot(reloadAud, reloadAudVol);
+            gameManager.instance.Reloading.SetActive(false);
 
-            
+            aud.PlayOneShot(reloadAud, reloadAudVol);
 
             gameManager.instance.updateUIAmmo();
 
             isReloading = false;
         }
     }
+
+    //IEnumerator reloading()
+    //{
+    //    gameManager.instance.Reloading.SetActive(true);
+
+    //    yield return new WaitForSeconds(reloadTime);
+
+    //    gameManager.instance.Reloading.SetActive(false);
+    //}
 
     public void playerRespawn()
     {
@@ -282,5 +298,17 @@ public class playerController : MonoBehaviour
         HP = HPOrig;
         controller.enabled = true;
         updatePlayerHPBar();
+    }
+
+    public void reloadAlert()
+    {
+        if(currAmmo < gunStatList[0].ammoCount / 2)
+        {
+            gameManager.instance.Reload.SetActive(true);
+        }
+        else
+        {
+            gameManager.instance.Reload.SetActive(false);
+        }
     }
 }

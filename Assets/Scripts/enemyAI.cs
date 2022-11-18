@@ -24,6 +24,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int roamDist;
     [SerializeField] int animLerpSpeed;
     [SerializeField] GameObject headPos;
+    [SerializeField] GameObject ammoCrate;
 
     [Header("---- Gun Stats ----")]
     [SerializeField] GameObject bullet;
@@ -45,6 +46,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float stoppingDistOrig;
     int HPOrig;
+    int ammoChance;
 
     float HPTimer = 0f;
 
@@ -172,6 +174,12 @@ public class enemyAI : MonoBehaviour, IDamage
             agent.enabled = false;
             gameManager.instance.updateUIEnemyKills();
 
+            ammoChance = Random.Range(0, 101);
+
+            if(ammoChance > 50)
+            {
+                Instantiate(ammoCrate,transform.position,transform.rotation);
+            }
         }
     }
 

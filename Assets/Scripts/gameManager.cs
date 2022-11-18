@@ -24,6 +24,8 @@ public class gameManager : MonoBehaviour
     public Image HPBar;
     public Image HPBarAnim;
     public GameObject getKills;
+    public GameObject Reloading;
+    public GameObject Reload;
 
 
     public int enemiesToKill;

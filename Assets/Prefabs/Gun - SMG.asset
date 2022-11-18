@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae85f3847e3f644e8a3e4a8e4ad29f6, type: 3}
   m_Name: Gun - SMG
   m_EditorClassIdentifier: 
-  shootRate: 0.1
+  shootRate: 0.3
   shootDist: 60
   shootDamage: 1
   ammoCount: 30
   reloadTime: 3
   kills: 0
-  gunModel: {fileID: 0}
-  hitEffect: {fileID: 0}
+  gunModel: {fileID: 399849239351473123, guid: 151907ccede4bf444b83482932a5e6b3, type: 3}
+  hitEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   muzzleFlash: {fileID: 0}
   gunSound: {fileID: 0}

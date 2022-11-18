@@ -3,7 +3,18 @@ guid: bc3851553f0ea8f43ab1294c74541b18
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - model: {instanceID: 0}
+  - agent: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - UI: {instanceID: 0}
+  - HPBar: {instanceID: 0}
+  - HPBarAnim: {instanceID: 0}
+  - aud: {instanceID: 0}
+  - headPos: {instanceID: 0}
+  - ammoCrate: {instanceID: 0}
+  - bullet: {instanceID: 0}
+  - shootPos: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

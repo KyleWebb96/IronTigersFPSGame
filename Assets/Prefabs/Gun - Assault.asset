@@ -19,6 +19,6 @@ MonoBehaviour:
   reloadTime: 4
   kills: 0
   gunModel: {fileID: 919132149155446097, guid: 33269b2b610f4c245a712795c1927939, type: 3}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   muzzleFlash: {fileID: 0}
   gunSound: {fileID: 0}

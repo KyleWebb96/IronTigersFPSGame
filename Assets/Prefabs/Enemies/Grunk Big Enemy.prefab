@@ -10152,6 +10152,7 @@ MonoBehaviour:
   roamDist: 30
   animLerpSpeed: 1
   headPos: {fileID: 2826887205264288242}
+  ammoCrate: {fileID: 2035429025467733898, guid: 957bf26a3a385614e8ae59cb5c2e30bc, type: 3}
   bullet: {fileID: 1074046604343275969, guid: 08cf8499dedd84748a85c45634e8642c, type: 3}
   shootPos: {fileID: 2826887206245888514}
   shootRate: 1
