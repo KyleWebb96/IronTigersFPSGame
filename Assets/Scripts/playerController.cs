@@ -231,6 +231,7 @@ public class playerController : MonoBehaviour
         reloadTime = gunStatList[selectedGun].reloadTime;
         gunAmmo = gunStatList[selectedGun].ammoCount;
         gameManager.instance.updateUIEnemyKills();
+        gameManager.instance.updateUIAmmo();
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunStatList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStatList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
