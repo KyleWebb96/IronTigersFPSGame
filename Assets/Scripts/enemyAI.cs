@@ -165,12 +165,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            gameManager.instance.updateEnemyNumber();
             gameManager.instance.playerScript.gunStatList[0].kills++;
             anim.SetBool("Dead", true);
             UI.SetActive(false);
             GetComponent<Collider>().enabled = false;
             agent.enabled = false;
+            gameManager.instance.updateUIEnemyKills();
+
         }
     }
 

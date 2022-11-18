@@ -101,14 +101,9 @@ public class gameManager : MonoBehaviour
         pauseGame();
     }
 
-    public void updateEnemyNumber()
+    public void updateUIEnemyKills()
     {
-        updateUIEnemyCount(-1);
-    }
-
-    public void updateUIEnemyCount(int amount)
-    {
-        enemiesToKill += amount;
+        enemiesToKill = playerScript.gunStatList[0].kills;
         enemiesLeft.text = enemiesToKill.ToString("F0");
     }
 

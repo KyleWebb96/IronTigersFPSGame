@@ -35710,6 +35710,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 856493723, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884988172, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955429634, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 153.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 955429635, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_text
+      value: Enemies Killed
+      objectReference: {fileID: 0}
     - target: {fileID: 1249487346468249344, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -35806,6 +35822,14 @@ PrefabInstance:
       propertyPath: spawnPos
       value: 
       objectReference: {fileID: 652019564}
+    - target: {fileID: 6934098500709484945, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598073169007478366, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 273.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ad3e14ea87d98644af62f3f84553ff2, type: 3}
 --- !u!1001 &2498316179752145622
